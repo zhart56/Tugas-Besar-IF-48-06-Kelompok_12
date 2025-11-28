@@ -5,7 +5,11 @@
 #include <iostream>
 using namespace std;
 
-// Definisi Pointer Parent
+#include "klien.h"
+#include <iostream>
+using namespace std;
+
+// --- DEFINISI TYPE ---
 typedef struct elmPengacara *adrPengacara;
 
 struct infotypePengacara {
@@ -17,18 +21,24 @@ struct infotypePengacara {
 struct elmPengacara {
     infotypePengacara info;
     adrPengacara next;
+    adrPengacara prev;
     adrKlien nextKlien;
 };
 
 struct List {
     adrPengacara first;
+    adrPengacara last;
 };
 
-// Primitif Pengacara
+// --- PRIMITIF PARENT (DLL) ---
 void createList(List &L);
 adrPengacara createElmPengacara(infotypePengacara data);
+
+// Insert & Delete (Logika DLL)
 void insertLastPengacara(List &L, adrPengacara P);
 void deletePengacara(List &L, string idPengacara);
+
+// Utility
 adrPengacara findPengacara(List L, string idPengacara);
 void showListPengacara(List L);
 
