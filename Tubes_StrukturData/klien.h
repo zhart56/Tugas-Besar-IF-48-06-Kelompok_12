@@ -15,7 +15,7 @@ struct infotypeKlien {
 
 struct elmKlien {
     infotypeKlien info;
-    adrKlien next; // Pointer ke sesama klien
+    adrKlien next;
 };
 
 adrKlien createElmKlien(infotypeKlien data);

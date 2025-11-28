@@ -13,15 +13,15 @@ void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien);
 // Menampilkan Pengacara BESERTA Kliennya (Hierarki)
 void showAllData(List L);
 
-// --- SEARCHING (FIND) ---
+// SEARCHING (FIND)
 adrPengacara findParentOfKlien(List L, string idKlien);
 adrKlien findKlienInPengacara(adrPengacara P, string idKlien);
 
-// --- COUNTING (STATISTIK) ---
+// COUNTING (STATISTIK)
 int countKlienByPengacara(List L, string idPengacara);
 int countPengacaraTanpaKlien(List L);
 
-// --- EDIT RELASI ---
+// EDIT RELASI
 void pindahPengacara(List &L, string idKlien, string idPengacaraLama, string idPengacaraBaru);
 
 #endif // RELASI_H_INCLUDED

@@ -16,8 +16,8 @@ struct infotypePengacara {
 
 struct elmPengacara {
     infotypePengacara info;
-    adrPengacara next;      // Next sesama pengacara
-    adrKlien nextKlien;     // RELASI: Menunjuk ke Klien pertama (Head of Child)
+    adrPengacara next;
+    adrKlien nextKlien;
 };
 
 struct List {
@@ -28,8 +28,8 @@ struct List {
 void createList(List &L);
 adrPengacara createElmPengacara(infotypePengacara data);
 void insertLastPengacara(List &L, adrPengacara P);
-void deletePengacara(List &L, string idPengacara); // Hapus parent
+void deletePengacara(List &L, string idPengacara);
 adrPengacara findPengacara(List L, string idPengacara);
-void showListPengacara(List L); // Hanya menampilkan data pengacara (tanpa klien)
+void showListPengacara(List L);
 
 #endif // PENGACARA_H_INCLUDED
