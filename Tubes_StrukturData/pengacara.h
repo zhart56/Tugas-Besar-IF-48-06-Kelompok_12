@@ -1,7 +1,7 @@
 #ifndef PENGACARA_H_INCLUDED
 #define PENGACARA_H_INCLUDED
 
-#include "klien.h" // Parent butuh tahu struktur Child
+#include "klien.h"
 #include <iostream>
 using namespace std;
 
