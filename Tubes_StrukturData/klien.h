@@ -19,6 +19,6 @@ struct elmKlien {
 };
 
 adrKlien createElmKlien(infotypeKlien data);
-void showInfoKlien(adrKlien C); // Menampilkan info 1 klien saja
+void showInfoKlien(adrKlien C);
 
 #endif // KLIEN_H_INCLUDED
