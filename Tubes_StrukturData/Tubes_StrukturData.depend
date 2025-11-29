@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1764361361 source:c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.cpp
+	"klien.h"
+
+1764332269 c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.h
+	<iostream>
+
+1764361494 source:c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.cpp
+	"pengacara.h"
+
+1764332349 c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.h
+	"klien.h"
+	<iostream>
+
+1764361518 source:c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.cpp
+	"relasi.h"
+
+1764331987 c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.h
+	"pengacara.h"
+	"klien.h"
+
