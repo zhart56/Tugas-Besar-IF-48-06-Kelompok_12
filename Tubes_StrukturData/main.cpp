@@ -6,17 +6,15 @@
 using namespace std;
 
 int main() {
-
     List L;
     createList(L);
-
 
     int pilihan = -1;
     string idParent, idChild, nama, firma, kasus, idBaru;
     adrPengacara P;
     adrKlien C;
 
-    cout << "=== APLIKASI MANAJEMEN FIRMA HUKUM (Null Objective Law ) ===" << endl;
+    cout << "=== APLIKASI MANAJEMEN FIRMA HUKUM (Null Objective Law) ===" << endl;
 
     while (pilihan != 0) {
         cout << "\n================ MENU UTAMA ================" << endl;
@@ -63,6 +61,7 @@ int main() {
                 cout << "Jenis Kasus    : "; getline(cin, dataK.kasus);
 
                 C = createElmKlien(dataK);
+
                 connectKlienToPengacara(L, idParent, C);
                 cout << ">> Sukses tambah klien ke " << P->info.namaPengacara << "." << endl;
             }
@@ -97,7 +96,6 @@ int main() {
                 if (K == NULL) {
                     cout << "   (Tidak ada klien untuk dihapus)" << endl;
                 } else {
-
                     while (K != NULL) {
                         cout << "   -> ID: " << K->info.idKlien << " | Nama: " << K->info.namaKlien << endl;
                         K = K->next;
@@ -109,7 +107,6 @@ int main() {
             } else {
                 cout << ">> ID Pengacara tidak ditemukan." << endl;
             }
-
 
         } else if (pilihan == 6) {
             cout << "--- HAPUS PENGACARA ---" << endl;

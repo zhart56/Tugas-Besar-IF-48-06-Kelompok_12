@@ -3,8 +3,7 @@
 void connectKlienToPengacara(List &L, string idPengacara, adrKlien C) {
     adrPengacara P = findPengacara(L, idPengacara);
     if (P != NULL) {
-        // Insert First ke List Child (NextKlien) milik P
-        // Child tetap SLL
+
         C->next = P->nextKlien;
         P->nextKlien = C;
     } else {
@@ -56,16 +55,15 @@ void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien) {
         adrKlien C = P->nextKlien;
         adrKlien Prev = NULL;
 
-        // Search di list child (SLL)
         while (C != NULL && C->info.idKlien != idKlien) {
             Prev = C;
             C = C->next;
         }
 
-        if (C != NULL) { // Ketemu
-            if (Prev == NULL) { // Hapus elemen pertama child
+        if (C != NULL) {
+            if (Prev == NULL) {
                 P->nextKlien = C->next;
-            } else { // Hapus elemen tengah/akhir child
+            } else {
                 Prev->next = C->next;
             }
             delete C;
@@ -79,7 +77,6 @@ void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien) {
 adrPengacara findParentOfKlien(List L, string idKlien) {
     adrPengacara P = L.first;
     while (P != NULL) {
-        // Gunakan fungsi bantu findKlienInPengacara
         if (findKlienInPengacara(P, idKlien) != NULL) {
             return P;
         }
@@ -122,7 +119,6 @@ void pindahPengacara(List &L, string idKlien, string idPengacaraLama, string idP
         return;
     }
 
-    // 1. Cari Klien di Lama
     adrKlien C = P_Lama->nextKlien;
     adrKlien Prev = NULL;
 
@@ -136,14 +132,12 @@ void pindahPengacara(List &L, string idKlien, string idPengacaraLama, string idP
         return;
     }
 
-    // 2. Putus dari Lama (Jangan delete C, cukup putus pointer)
     if (Prev == NULL) {
         P_Lama->nextKlien = C->next;
     } else {
         Prev->next = C->next;
     }
 
-    // 3. Sambung ke Baru (Insert First)
     C->next = P_Baru->nextKlien;
     P_Baru->nextKlien = C;
 

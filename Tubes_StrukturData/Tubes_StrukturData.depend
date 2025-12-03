@@ -19,3 +19,29 @@
 	"pengacara.h"
 	"klien.h"
 
+1764739137 source:c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.cpp
+	"klien.h"
+
+1764739705 c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.h
+	<iostream>
+
+1764738019 source:c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\main.cpp
+	<iostream>
+	"pengacara.h"
+	"klien.h"
+	"relasi.h"
+
+1764739603 c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.h
+	"klien.h"
+	<iostream>
+
+1764734495 c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.h
+	"pengacara.h"
+	"klien.h"
+
+1764736936 source:c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.cpp
+	"pengacara.h"
+
+1764738102 source:c:\users\hilwa\downloads\kuliah\semesster 3\struktur data\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.cpp
+	"relasi.h"
+

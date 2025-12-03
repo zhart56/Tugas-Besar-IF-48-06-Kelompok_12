@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-// Definisi Pointer Child
 typedef struct elmKlien *adrKlien;
 
 struct infotypeKlien {
@@ -20,5 +19,12 @@ struct elmKlien {
 
 adrKlien createElmKlien(infotypeKlien data);
 void showInfoKlien(adrKlien C);
+
+void insertLastKlien(adrKlien &first, adrKlien P);
+void deleteKlien(adrKlien &first, string idKlien, adrKlien &P);
+void showAllKlien(adrKlien first);
+
+adrKlien findKlien(adrKlien first, string idKlien);
+int countKlien(adrKlien first);
 
 #endif // KLIEN_H_INCLUDED

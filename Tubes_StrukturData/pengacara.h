@@ -4,7 +4,7 @@
 #include "klien.h"
 #include <iostream>
 using namespace std;
-// Definisi Parent
+
 typedef struct elmPengacara *adrPengacara;
 
 struct infotypePengacara {
@@ -20,11 +20,10 @@ struct elmPengacara {
     adrKlien nextKlien;
 };
 
-struct List {
+ struct List {
     adrPengacara first;
     adrPengacara last;
 };
-
 
 void createList(List &L);
 adrPengacara createElmPengacara(infotypePengacara data);
