@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-// Definisi Pointer Child
 typedef struct elmKlien *adrKlien;
 
 struct infotypeKlien {
