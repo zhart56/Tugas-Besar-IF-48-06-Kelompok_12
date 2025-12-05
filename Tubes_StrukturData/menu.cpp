@@ -9,7 +9,7 @@ void runMenu(List &L) {
         cout << "\n\n";
         cout << "========================================" << endl;
         cout << "    APLIKASI MANAJEMEN FIRMA HUKUM      " << endl;
-        cout << "    (Kelompok Null Objective Law)          " << endl;
+        cout << "    (Kelompok Null Objective Law)       " << endl;
         cout << "========================================" << endl;
         cout << "1.  Tambah Pengacara (Parent)" << endl;
         cout << "2.  Tambah Klien & Hubungkan (Child)" << endl;
@@ -28,26 +28,35 @@ void runMenu(List &L) {
         cout << endl;
 
         if (pilihan == 1) {
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: INSERT ELEMENT PARENT" << endl;
             cout << "--- TAMBAH PENGACARA ---" << endl;
             infotypePengacara dataP;
-            cout << "ID Pengacara   : "; getline(cin, dataP.idPengacara);
-            cout << "Nama Pengacara : "; getline(cin, dataP.namaPengacara);
-            cout << "Nama Firma     : "; getline(cin, dataP.firma);
+            cout << "ID Pengacara   : ";
+            getline(cin, dataP.idPengacara);
+            cout << "Nama Pengacara : ";
+            getline(cin, dataP.namaPengacara);
+            cout << "Nama Firma     : ";
+            getline(cin, dataP.firma);
 
             insertLastPengacara(L, createElmPengacara(dataP));
             cout << ">> Sukses menambahkan pengacara." << endl;
 
         } else if (pilihan == 2) {
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: INSERT ELEMENT CHILD & RELASI" << endl;
             cout << "--- TAMBAH KLIEN ---" << endl;
             showListPengacara(L);
-            cout << "\nID Pengacara Tujuan: "; getline(cin, idParent);
+            cout << "\nID Pengacara Tujuan: ";
+            getline(cin, idParent);
 
             P = findPengacara(L, idParent);
             if (P != NULL) {
                 infotypeKlien dataK;
-                cout << "ID Klien    : "; getline(cin, dataK.idKlien);
-                cout << "Nama Klien  : "; getline(cin, dataK.namaKlien);
-                cout << "Kasus       : "; getline(cin, dataK.kasus);
+                cout << "ID Klien    : ";
+                getline(cin, dataK.idKlien);
+                cout << "Nama Klien  : ";
+                getline(cin, dataK.namaKlien);
+                cout << "Kasus       : ";
+                getline(cin, dataK.kasus);
                 connectKlienToPengacara(L, idParent, createElmKlien(dataK));
                 cout << ">> Sukses menambahkan klien." << endl;
             } else {
@@ -55,26 +64,34 @@ void runMenu(List &L) {
             }
 
         } else if (pilihan == 3) {
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: SHOW ALL DATA (PARENT & CHILD)" << endl;
             showAllData(L);
 
         } else if (pilihan == 4) {
-            cout << "ID Pengacara: "; getline(cin, idParent);
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: FIND ELEMENT PARENT" << endl;
+            cout << "ID Pengacara: ";
+            getline(cin, idParent);
             P = findPengacara(L, idParent);
             if (P) cout << "Ditemukan: " << P->info.namaPengacara << endl;
             else cout << "Tidak ditemukan." << endl;
 
         } else if (pilihan == 5) {
-            cout << "ID Klien: "; getline(cin, idChild);
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: FIND PARENT DARI CHILD TERTENTU" << endl;
+            cout << "ID Klien: ";
+            getline(cin, idChild);
             P = findParentOfKlien(L, idChild);
             if (P) cout << "Pengacara: " << P->info.namaPengacara << endl;
             else cout << "Tidak ditemukan." << endl;
 
         } else if (pilihan == 6) {
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: DELETE ELEMENT PARENT" << endl;
             showListPengacara(L);
-            cout << "\nID Pengacara yg dihapus: "; getline(cin, idParent);
+            cout << "\nID Pengacara yg dihapus: ";
+            getline(cin, idParent);
             deletePengacara(L, idParent);
 
         } else if (pilihan == 7) {
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: DELETE ELEMENT CHILD & RELASI" << endl;
             cout << "--- HAPUS KLIEN ---" << endl;
             showListPengacara(L);
             cout << "\nPilih ID Pengacara: "; getline(cin, idParent);
@@ -84,23 +101,30 @@ void runMenu(List &L) {
                 adrKlien K = P->nextKlien;
                 while(K){ cout << "- " << K->info.namaKlien << " (" << K->info.idKlien << ")" << endl; K=K->next; }
 
-                cout << "\nID Klien yg dihapus: "; getline(cin, idChild);
+                cout << "\nID Klien yg dihapus: ";
+                getline(cin, idChild);
                 deleteKlienFromPengacara(L, idParent, idChild);
             } else {
                 cout << "Pengacara tidak valid." << endl;
             }
 
         } else if (pilihan == 8) {
-            cout << "ID Pengacara (Isi '-' jika ingin cek global): "; getline(cin, idParent);
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: COUNTING RELATIONS" << endl;
+            cout << "ID Pengacara (Isi '-' jika ingin cek global): ";
+            getline(cin, idParent);
             if (idParent != "-") {
                 cout << "Jumlah Klien: " << countKlienByPengacara(L, idParent) << endl;
             }
             cout << "Total Pengacara Nganggur: " << countPengacaraTanpaKlien(L) << endl;
 
         } else if (pilihan == 9) {
-            cout << "ID Klien           : "; getline(cin, idChild);
-            cout << "ID Pengacara LAMA  : "; getline(cin, idParent);
-            cout << "ID Pengacara BARU  : "; getline(cin, idBaru);
+            cout << ">>> [SYSTEM] Menjalankan Fungsi: EDIT RELASI (PINDAH PARENT)" << endl;
+            cout << "ID Klien           : ";
+            getline(cin, idChild);
+            cout << "ID Pengacara LAMA  : ";
+            getline(cin, idParent);
+            cout << "ID Pengacara BARU  : ";
+            getline(cin, idBaru);
             pindahPengacara(L, idChild, idParent, idBaru);
 
         } else if (pilihan == 0) {
