@@ -32,3 +32,36 @@
 1764938500 source:c:\users\ardra\onedrive\documents\sistem operasi\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\menu.cpp
 	"menu.h"
 
+1764361361 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.cpp
+	"klien.h"
+
+1764936307 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.h
+	<iostream>
+
+1764936628 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\main.cpp
+	<iostream>
+	"menu.h"
+
+1764936407 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\menu.h
+	"pengacara.h"
+	"klien.h"
+	"relasi.h"
+	<iostream>
+
+1764332349 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.h
+	"klien.h"
+	<iostream>
+
+1764331987 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.h
+	"pengacara.h"
+	"klien.h"
+
+1764938500 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\menu.cpp
+	"menu.h"
+
+1764917402 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.cpp
+	"pengacara.h"
+
+1765248860 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.cpp
+	"relasi.h"
+

@@ -20,8 +20,9 @@ void showAllData(List L) {
 
     while (P != NULL) {
         cout << "========================================" << endl;
-        cout << "[PENGACARA] " << P->info.namaPengacara
-             << " (" << P->info.firma << ")" << endl;
+        cout << "[PENGACARA] ID: " << P->info.idPengacara
+             << " | Nama: " << P->info.namaPengacara
+             << " | Firma: " << P->info.firma << endl;
 
         adrKlien C = P->nextKlien;
         if (C == NULL) {
