@@ -40,13 +40,14 @@ void showAllData(List L) {
 adrKlien findKlienInPengacara(adrPengacara P, string idKlien) {
     if (P == NULL) return NULL;
     adrKlien C = P->nextKlien;
+    adrKlien x = nullptr;
     while (C != NULL) {
         if (C->info.idKlien == idKlien) {
-            return C;
+            x = C;
         }
         C = C->next;
     }
-    return NULL;
+    return x;
 }
 
 void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien) {

@@ -35,6 +35,8 @@
 		<Unit filename="klien.cpp" />
 		<Unit filename="klien.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.h" />
 		<Unit filename="pengacara.cpp" />
 		<Unit filename="pengacara.h" />
 		<Unit filename="relasi.cpp" />
