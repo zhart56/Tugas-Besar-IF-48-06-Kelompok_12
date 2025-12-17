@@ -1,15 +1,22 @@
 #include "relasi.h"
 
 void connectKlienToPengacara(List &L, string idPengacara, adrKlien C) {
-    adrPengacara P = findPengacara(L, idPengacara);
-    if (P != NULL) {
-
-        C->next = P->nextKlien;
-        P->nextKlien = C;
+    if (C == NULL) {
+        cout << "Klien tidak valid." << endl;
+    } else if (findParentOfKlien(L, C->info.idKlien) != NULL) {
+        cout << "Gagal Connect: Klien sudah memiliki pengacara." << endl;
     } else {
-        cout << "Gagal Connect: Pengacara tidak ditemukan." << endl;
+        adrPengacara P = findPengacara(L, idPengacara);
+        if (P != NULL) {
+            C->next = P->nextKlien;
+            P->nextKlien = C;
+            cout << "Berhasil menghubungkan klien ke pengacara." << endl;
+        } else {
+            cout << "Gagal Connect: Pengacara tidak ditemukan." << endl;
+        }
     }
 }
+
 
 void showAllData(List L) {
     adrPengacara P = L.first;
@@ -17,13 +24,11 @@ void showAllData(List L) {
         cout << "List Kosong." << endl;
         return;
     }
-
     while (P != NULL) {
         cout << "========================================" << endl;
         cout << "[PENGACARA] ID: " << P->info.idPengacara
              << " | Nama: " << P->info.namaPengacara
              << " | Firma: " << P->info.firma << endl;
-
         adrKlien C = P->nextKlien;
         if (C == NULL) {
             cout << "   (Tidak ada klien)" << endl;
@@ -41,19 +46,21 @@ void showAllData(List L) {
 adrKlien findKlienInPengacara(adrPengacara P, string idKlien) {
     if (P == NULL) return NULL;
     adrKlien C = P->nextKlien;
-    adrKlien x = nullptr;
     while (C != NULL) {
         if (C->info.idKlien == idKlien) {
-            x = C;
+            return C;   // langsung berhenti
         }
         C = C->next;
     }
-    return x;
+    return NULL;
 }
 
 void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien) {
     adrPengacara P = findPengacara(L, idPengacara);
-    if (P != NULL) {
+
+    if (P == NULL) {
+        cout << "Pengacara tidak ditemukan." << endl;
+    } else {
         adrKlien C = P->nextKlien;
         adrKlien Prev = NULL;
 
@@ -62,19 +69,21 @@ void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien) {
             C = C->next;
         }
 
-        if (C != NULL) {
+        if (C == NULL) {
+            cout << "Klien tidak ditemukan." << endl;
+        } else {
             if (Prev == NULL) {
                 P->nextKlien = C->next;
             } else {
                 Prev->next = C->next;
             }
+            C->next = NULL;
             delete C;
             cout << "Berhasil menghapus Klien " << idKlien << endl;
-        } else {
-            cout << "Klien tidak ditemukan." << endl;
         }
     }
 }
+
 
 adrPengacara findParentOfKlien(List L, string idKlien) {
     adrPengacara P = L.first;
@@ -118,29 +127,31 @@ void pindahPengacara(List &L, string idKlien, string idPengacaraLama, string idP
 
     if (P_Lama == NULL || P_Baru == NULL) {
         cout << "Gagal Pindah: Data pengacara tidak valid." << endl;
-        return;
-    }
-    adrKlien C = P_Lama->nextKlien;
-    adrKlien Prev = NULL;
-
-    while (C != NULL && C->info.idKlien != idKlien) {
-        Prev = C;
-        C = C->next;
-    }
-
-    if (C == NULL) {
-        cout << "Gagal Pindah: Klien tidak ditemukan di pengacara lama." << endl;
-        return;
-    }
-
-    if (Prev == NULL) {
-        P_Lama->nextKlien = C->next;
     } else {
-        Prev->next = C->next;
+        adrKlien C = P_Lama->nextKlien;
+        adrKlien Prev = NULL;
+
+        while (C != NULL && C->info.idKlien != idKlien) {
+            Prev = C;
+            C = C->next;
+        }
+
+        if (C == NULL) {
+            cout << "Gagal Pindah: Klien tidak ditemukan." << endl;
+        } else {
+            if (Prev == NULL) {
+                P_Lama->nextKlien = C->next;
+            } else {
+                Prev->next = C->next;
+            }
+
+            C->next = P_Baru->nextKlien;
+            P_Baru->nextKlien = C;
+
+            cout << "Sukses memindahkan Klien "
+                 << C->info.namaKlien
+                 << " ke "
+                 << P_Baru->info.namaPengacara << endl;
+        }
     }
-
-    C->next = P_Baru->nextKlien;
-    P_Baru->nextKlien = C;
-
-    cout << "Sukses memindahkan Klien " << C->info.namaKlien << " ke " << P_Baru->info.namaPengacara << endl;
 }

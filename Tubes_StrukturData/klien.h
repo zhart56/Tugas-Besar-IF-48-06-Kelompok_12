@@ -20,4 +20,6 @@ struct elmKlien {
 adrKlien createElmKlien(infotypeKlien data);
 void showInfoKlien(adrKlien C);
 
+adrKlien findKlien(adrKlien first, string idKlien);
+
 #endif // KLIEN_H_INCLUDED

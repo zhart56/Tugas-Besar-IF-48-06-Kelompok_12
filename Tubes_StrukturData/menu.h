@@ -4,9 +4,6 @@
 #include "pengacara.h"
 #include "klien.h"
 #include "relasi.h"
-#include <iostream>
-
-using namespace std;
 
 void runMenu(List &L);
 
