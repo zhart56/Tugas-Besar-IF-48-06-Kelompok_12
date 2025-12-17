@@ -7,4 +7,4 @@
 
 void runMenu(List &L);
 
-#endif // MENU_H_INCLUDED
+#endif

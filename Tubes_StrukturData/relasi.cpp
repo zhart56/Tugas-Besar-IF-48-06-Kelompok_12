@@ -20,27 +20,28 @@ void connectKlienToPengacara(List &L, string idPengacara, adrKlien C) {
 
 void showAllData(List L) {
     adrPengacara P = L.first;
-    if (P == NULL) {
-        cout << "List Kosong." << endl;
-        return;
-    }
+
     while (P != NULL) {
-        cout << "========================================" << endl;
         cout << "[PENGACARA] ID: " << P->info.idPengacara
              << " | Nama: " << P->info.namaPengacara
              << " | Firma: " << P->info.firma << endl;
-        adrKlien C = P->nextKlien;
-        if (C == NULL) {
-            cout << "   (Tidak ada klien)" << endl;
+
+        adrKlien K = P->nextKlien;
+
+        if (K == NULL) {
+            cout << "   (Belum mempunyai klien)" << endl;
         } else {
-            while (C != NULL) {
-                showInfoKlien(C);
-                C = C->next;
+            while (K != NULL) {
+                cout << " [KLIEN] ID: " << K->info.idKlien
+                     << " | Nama: " << K->info.namaKlien
+                     << " | Kasus: " << K->info.kasus << endl;
+                K = K->next;
             }
         }
+
+        cout << "========================================" << endl;
         P = P->next;
     }
-    cout << "========================================" << endl;
 }
 
 adrKlien findKlienInPengacara(adrPengacara P, string idKlien) {

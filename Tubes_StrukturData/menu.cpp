@@ -1,7 +1,5 @@
 #include "menu.h"
 
-/* ======================= MENU ADMIN ======================= */
-
 void menuAdmin(List &L) {
     int pilihan = -1;
 
@@ -24,7 +22,6 @@ void menuAdmin(List &L) {
         cin >> pilihan;
         cin.ignore();
 
-        /* 1. TAMBAH PENGACARA */
         if (pilihan == 1) {
             infotypePengacara P;
             cout << "ID Pengacara   : ";
@@ -42,9 +39,10 @@ void menuAdmin(List &L) {
             }
         }
 
-        /* 2. TAMBAH KLIEN (BELUM TERHUBUNG) */
         else if (pilihan == 2) {
+
             infotypeKlien K;
+
             cout << "ID Klien   : ";
             getline(cin, K.idKlien);
 
@@ -55,34 +53,45 @@ void menuAdmin(List &L) {
                 getline(cin, K.namaKlien);
                 cout << "Kasus      : ";
                 getline(cin, K.kasus);
+
                 cout << "Klien berhasil dibuat (belum terhubung)." << endl;
             }
         }
 
-        /* 3. HUBUNGKAN KLIEN */
         else if (pilihan == 3) {
-            string idKlien, idPengacara;
-            cout << "ID Klien      : ";
-            getline(cin, idKlien);
+            string idPengacara;
+            infotypeKlien K;
+
             cout << "ID Pengacara  : ";
             getline(cin, idPengacara);
 
             adrPengacara P = findPengacara(L, idPengacara);
-            if (P != NULL) {
-                infotypeKlien K;
-                K.idKlien = idKlien;
-                connectKlienToPengacara(L, idPengacara, createElmKlien(K));
-            } else {
+
+            if (P == NULL) {
                 cout << "Pengacara tidak ditemukan." << endl;
+            } else {
+                cout << "ID Klien      : ";
+                getline(cin, K.idKlien);
+
+                if (findParentOfKlien(L, K.idKlien) != NULL) {
+                    cout << "Klien sudah memiliki pengacara." << endl;
+                } else {
+                    cout << "Nama Klien    : ";
+                    getline(cin, K.namaKlien);
+                    cout << "Kasus         : ";
+                    getline(cin, K.kasus);
+
+                    connectKlienToPengacara(L, idPengacara, createElmKlien(K));
+                    cout << "Klien berhasil dihubungkan ke pengacara." << endl;
+                }
+
             }
         }
 
-        /* 4. SHOW ALL */
         else if (pilihan == 4) {
             showAllData(L);
         }
 
-        /* 5. CARI PENGACARA */
         else if (pilihan == 5) {
             string id;
             cout << "ID Pengacara: ";
@@ -94,7 +103,6 @@ void menuAdmin(List &L) {
                 cout << "Tidak ditemukan." << endl;
         }
 
-        /* 6. CARI PENGACARA DARI KLIEN */
         else if (pilihan == 6) {
             string id;
             cout << "ID Klien: ";
@@ -106,7 +114,6 @@ void menuAdmin(List &L) {
                 cout << "Tidak ditemukan." << endl;
         }
 
-        /* 7. HAPUS PENGACARA */
         else if (pilihan == 7) {
             string id;
             cout << "ID Pengacara: ";
@@ -114,7 +121,6 @@ void menuAdmin(List &L) {
             deletePengacara(L, id);
         }
 
-        /* 8. HAPUS KLIEN */
         else if (pilihan == 8) {
             string idP, idK;
             cout << "ID Pengacara: ";
@@ -124,7 +130,6 @@ void menuAdmin(List &L) {
             deleteKlienFromPengacara(L, idP, idK);
         }
 
-        /* 9. PINDAH */
         else if (pilihan == 9) {
             string idK, lama, baru;
             cout << "ID Klien        : ";
@@ -244,26 +249,24 @@ void menuUserKlien(List &L) {
     getline(cin, myID);
 
     if (myID == "") {
-        cout << ">> ERROR: ID tidak boleh kosong!" << endl;
-        loginValid = false;
+        cout << "ID tidak boleh kosong." << endl;
+        return;
     }
 
-    adrPengacara P = NULL;
-    adrKlien K = NULL;
+    adrPengacara P = findParentOfKlien(L, myID);
+    if (P == NULL) {
+        cout << "Klien tidak terdaftar atau belum memiliki pengacara." << endl;
+        return;
+    }
 
-    if (loginValid) {
-        P = findParentOfKlien(L, myID);
-        if (P != NULL) {
-            K = findKlienInPengacara(P, myID);
-        }
-        if (P == NULL || K == NULL) {
-            cout << ">> Error: Klien tidak terdaftar!" << endl;
-            loginValid = false;
-        }
+    adrKlien K = findKlienInPengacara(P, myID);
+    if (K == NULL) {
+        cout << "Data klien tidak ditemukan." << endl;
+        return;
     }
 
     int pilihan = -1;
-    while (loginValid && pilihan != 0) {
+    while (pilihan != 0) {
         cout << "\n========================================" << endl;
         cout << "Halo, " << K->info.namaKlien
              << " (ID: " << K->info.idKlien << ")" << endl;
@@ -281,25 +284,33 @@ void menuUserKlien(List &L) {
             cout << "Nama  : " << P->info.namaPengacara << endl;
             cout << "ID    : " << P->info.idPengacara << endl;
             cout << "Firma : " << P->info.firma << endl;
+        }
 
-        } else if (pilihan == 2) {
+        else if (pilihan == 2) {
             cout << "Kasus: " << K->info.kasus << endl;
+        }
 
-        } else if (pilihan == 3) {
+        else if (pilihan == 3) {
             string idBaru;
-            showListPengacara(L);
             cout << "ID Pengacara Baru: ";
             getline(cin, idBaru);
 
             if (idBaru == "") {
-                cout << ">> ERROR: ID tidak boleh kosong!" << endl;
-            } else if (findPengacara(L, idBaru) == NULL) {
-                cout << ">> ERROR: Pengacara tidak ditemukan!" << endl;
-            } else {
+                cout << "ID tidak boleh kosong." << endl;
+            }
+            else if (findPengacara(L, idBaru) == NULL) {
+                cout << "Pengacara tidak ditemukan." << endl;
+            }
+            else if (idBaru == P->info.idPengacara) {
+                cout << "Anda sudah berada pada pengacara tersebut." << endl;
+            }
+            else {
                 pindahPengacara(L, myID, P->info.idPengacara, idBaru);
+
                 P = findParentOfKlien(L, myID);
                 K = findKlienInPengacara(P, myID);
-                cout << ">> Berhasil pindah pengacara." << endl;
+
+                cout << "Berhasil pindah pengacara." << endl;
             }
         }
 
@@ -309,6 +320,7 @@ void menuUserKlien(List &L) {
         }
     }
 }
+
 
 void runMenu(List &L) {
     int pilih = -1;
