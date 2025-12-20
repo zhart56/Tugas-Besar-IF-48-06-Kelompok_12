@@ -7,8 +7,8 @@ using namespace std;
 typedef struct elmKlien *adrKlien;
 
 struct infotypeKlien {
-    string idKlien;
     string namaKlien;
+    string idKlien;
     string kasus;
 };
 
@@ -20,4 +20,4 @@ struct elmKlien {
 adrKlien createElmKlien(infotypeKlien data);
 void showInfoKlien(adrKlien C);
 
-#endif
+#endif // KLIEN_H_INCLUDED

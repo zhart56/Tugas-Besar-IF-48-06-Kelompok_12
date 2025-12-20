@@ -4,6 +4,7 @@
 #include "klien.h"
 #include <iostream>
 using namespace std;
+
 // Definisi Parent
 typedef struct elmPengacara *adrPengacara;
 
@@ -25,11 +26,13 @@ struct List {
     adrPengacara last;
 };
 
-
 void createList(List &L);
 adrPengacara createElmPengacara(infotypePengacara data);
 
+void insertFirstPengacara(List &L, adrPengacara P);
 void insertLastPengacara(List &L, adrPengacara P);
+void insertAfterPengacara(List &L, adrPengacara Prec, adrPengacara P);
+
 void deletePengacara(List &L, string idPengacara);
 
 adrPengacara findPengacara(List L, string idPengacara);

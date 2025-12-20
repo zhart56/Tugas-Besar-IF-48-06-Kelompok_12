@@ -96,3 +96,25 @@
 1765996473 source:d:\download\std\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.cpp
 	"relasi.h"
 
+1766216680 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\main.cpp
+	"menu.h"
+
+1766216680 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\menu.h
+	"pengacara.h"
+	"klien.h"
+	"relasi.h"
+
+1766217075 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\pengacara.h
+	"klien.h"
+	<iostream>
+
+1766217134 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\klien.h
+	<iostream>
+
+1766217176 c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\relasi.h
+	"pengacara.h"
+	"klien.h"
+
+1766216839 source:c:\users\ardra\onedrive\documents\struktur data if-48-06 ufp\tugas-besar-if-48-06-kelompok_12 - copy\tugas-besar-if-48-06-kelompok_12\tubes_strukturdata\menu.cpp
+	"menu.h"
+

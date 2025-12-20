@@ -4,14 +4,13 @@
 #include "pengacara.h"
 #include "klien.h"
 
-void connectKlienToPengacara(List &L, string idPengacara, adrKlien C);
 
+void connectKlienToPengacara(List &L, string idPengacara, adrKlien C);
 void deleteKlienFromPengacara(List &L, string idPengacara, string idKlien);
 
 void showAllData(List L);
 
 adrPengacara findParentOfKlien(List L, string idKlien);
-
 adrKlien findKlienInPengacara(adrPengacara P, string idKlien);
 
 int countKlienByPengacara(List L, string idPengacara);

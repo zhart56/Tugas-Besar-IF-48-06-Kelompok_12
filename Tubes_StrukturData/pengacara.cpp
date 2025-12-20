@@ -14,6 +14,17 @@ adrPengacara createElmPengacara(infotypePengacara data) {
     return P;
 }
 
+void insertFirstPengacara(List &L, adrPengacara P) {
+    if (L.first == NULL) {
+        L.first = P;
+        L.last = P;
+    } else {
+        P->next = L.first;
+        L.first->prev = P;
+        L.first = P;
+    }
+}
+
 void insertLastPengacara(List &L, adrPengacara P) {
     if (L.first == NULL) {
         L.first = P;
@@ -22,6 +33,24 @@ void insertLastPengacara(List &L, adrPengacara P) {
         P->prev = L.last;
         L.last->next = P;
         L.last = P;
+    }
+}
+
+void insertAfterPengacara(List &L, adrPengacara Prec, adrPengacara P) {
+    // Pastikan Prec valid
+    if (Prec != NULL) {
+        P->next = Prec->next;
+        P->prev = Prec;
+        Prec->next = P;
+
+        if (P->next != NULL) {
+            P->next->prev = P;
+        } else {
+            // Jika Prec adalah elemen terakhir, update L.last
+            L.last = P;
+        }
+    } else {
+        cout << "Gagal Insert After: Predecessor tidak ditemukan." << endl;
     }
 }
 
@@ -63,6 +92,7 @@ void deletePengacara(List &L, string idPengacara) {
     }
     P->next = NULL;
     P->prev = NULL;
+    // Relasi ke anak akan putus.
     delete P;
 
     cout << "Berhasil menghapus Pengacara ID: " << idPengacara << endl;

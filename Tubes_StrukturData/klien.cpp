@@ -7,13 +7,8 @@ adrKlien createElmKlien(infotypeKlien data) {
     return C;
 }
 
-adrKlien findKlien(adrKlien first, string idKlien) {
-    adrKlien C = first;
-    while (C != NULL) {
-        if (C->info.idKlien == idKlien) {
-            return C;
-        }
-        C = C->next;
-    }
-    return NULL;
+void showInfoKlien(adrKlien C) {
+    cout << "   -> [KLIEN] ID: " << C->info.idKlien
+         << " | Nama: " << C->info.namaKlien
+         << " | Kasus: " << C->info.kasus << endl;
 }
